@@ -1,0 +1,17 @@
+.sidebar{
+    background: #15171c;
+
+    height: 100vh;
+    min-width: 250px;
+    max-width: 500px;
+        
+    display: flex;
+    flex-direction: column;
+
+    resize: horizontal;
+    overflow: auto;
+
+    .sidebarWraper{
+        width: 100%;
+    }
+}

@@ -1,0 +1,19 @@
+.userSidbar{
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+
+
+    .userImg{
+        font-size: 1.5rem;
+        font-weight: 600;
+        height: 60px;
+        width: 60px;
+        background: blue;
+        border-radius: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
