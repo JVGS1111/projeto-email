@@ -1,0 +1,11 @@
+.btn{
+    background: var(--btn-background);
+    border-radius: 1.5rem;
+    border: none;
+    color: var(--text-color2);
+    
+    &:hover{
+        filter: brightness(85%);
+
+    }
+}
