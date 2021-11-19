@@ -1,0 +1,65 @@
+.painelTools{
+    padding: 0 1.2rem;
+
+    .searchbar{
+        width: 100%;
+        padding: 1.2rem 0;
+        position: relative;
+        input{
+            width: 100%;
+            height: 60px;
+            border-radius: 1.5rem;
+            background-color: var(--btn-background);
+            padding-left: 1rem;
+            cursor: pointer;
+    
+            &::placeholder{
+                color: var(--color2);
+                font-size: 1.2rem;
+            }
+            &:focus{
+                cursor: text;
+            }
+        }
+    
+        .divisor{
+            height: 1px;
+            background-color: #ccc;
+            bottom: 0;
+            width: calc(100% - 1.2rem);
+            position: absolute;
+            right: 0;
+            left: 0;
+            margin: 0 auto;
+        }
+    
+    }
+    .painelButtons{
+        padding: 1.2rem 0;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .filter{
+            color: var(--btn-background);
+            cursor: pointer;
+            height: 2rem;
+            width: 2rem;
+        }
+
+        .buttons{
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            .btn{
+                color: var(--color1);
+                padding: 1rem 1rem;  
+            }
+            input{
+                //estilizar 
+            }
+        }
+    }
+}
+

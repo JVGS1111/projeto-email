@@ -1,15 +1,10 @@
 .userSidbar{
-    padding: 20px;
+    padding: 1.2rem;
     display: flex;
     justify-content: space-between;
     position: relative;
     align-items: center;
 
-    // .userImg:hover {
-    //     backdrop-filter: blur(10px);
-    //     -webkit-backdrop-filter: blur(10px);
-    //     bug que causa overlay ao adicionar efeitos
-    // }
 
     .userImg{
         cursor: pointer;

@@ -2,23 +2,23 @@ import styles from './styles.module.scss';
 import { Link } from 'react-router-dom';
 
 import { useState } from 'react';
+import * as RiIcons from 'react-icons/ri'
+import * as IoIcons from 'react-icons/io'
+
 
 interface SidebarProps {
-    title: string;
-    path: string;
-    icon: JSX.Element;
-    iconClosed?: JSX.Element;
-    iconOpen?: JSX.Element;
-    subNav?: {
-        title: string;
-        path: string;
-        icon: JSX.Element;
+    id: number,
+    name: string,
+    subMenus?: {
+        id: number,
+        name: string,
     }[]
 }
 
 interface sidebarmenuProps {
     item: SidebarProps
 }
+
 export function SidebarMenu({ item }: sidebarmenuProps) {
 
     const [subnav, setSubnav] = useState(false);
@@ -27,29 +27,30 @@ export function SidebarMenu({ item }: sidebarmenuProps) {
         setSubnav(!subnav);
     }
 
+
     return (
         <>
-            <Link className={styles.sidebarLink} to={item.path} onClick={item.subNav && toggleShowSubnav}>
+            <Link className={styles.sidebarLink} to={'#'} onClick={item.subMenus && toggleShowSubnav}>
                 <div >
-                    {item.icon}
-                    <span >{item.title}</span>
+                    <IoIcons.IoMdPeople />
+                    <span >{item.name}</span>
                 </div>
                 <div>
-                    {item.subNav && subnav
-                        ? item.iconOpen
-                        : item.subNav
-                            ? item.iconClosed
+                    {item.subMenus && subnav
+                        ? <RiIcons.RiArrowDownCircleFill />
+                        : item.subMenus
+                            ? <RiIcons.RiArrowUpCircleFill />
                             : null
                     }
                 </div>
 
 
             </Link>
-            {subnav && item.subNav?.map((item, index) => {
+            {subnav && item.subMenus?.map((item) => {
                 return (
-                    <Link className={styles.dropdonwLink} to={item.path} key={index}>
-                        {item.icon}
-                        <span>{item.title}</span>
+                    <Link className={styles.dropdonwLink} to={'#'} key={item.id}>
+                        <IoIcons.IoIosPaper />
+                        <span>{item.name}</span>
                     </Link>
                 )
             })}

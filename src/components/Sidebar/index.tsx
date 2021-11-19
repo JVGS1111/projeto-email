@@ -1,26 +1,22 @@
 import styles from './styles.module.scss';
 import { Link } from 'react-router-dom'
-import * as FaIcons from 'react-icons/fa'
-import * as AiIcons from 'react-icons/ai'
-import { SidebarData } from '../SidebarData';
+
 import { SidebarMenu } from '../SidebarMenu';
 import { UserSidebar } from '../UserSidebar';
+import { useData } from '../../hooks/dataContext';
 
 interface SidebarProps {
-    title: string;
-    path: string;
-    icon: JSX.Element;
-    iconClosed?: JSX.Element;
-    iconOpen?: JSX.Element;
-    subNav?: {
-        title: string;
-        path: string;
-        icon: JSX.Element;
+    id: number,
+    name: string,
+    subMenus?: {
+        id: number,
+        name: string,
     }[]
 }
 
 export function Sidebar() {
 
+    const { navData } = useData()
     return (
         <>
 
@@ -28,8 +24,8 @@ export function Sidebar() {
                 <UserSidebar />
                 <div className={styles.sidebarWraper}>
                     {
-                        SidebarData.map((item: SidebarProps, index) => {
-                            return <SidebarMenu item={item} key={index} />
+                        navData.map((item: SidebarProps) => {
+                            return <SidebarMenu item={item} key={item.id} />
                         })
                     }
                 </div>

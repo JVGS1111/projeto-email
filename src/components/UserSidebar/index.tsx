@@ -9,7 +9,6 @@ export function UserSidebar() {
 
     function toggleUserModal() {
         setUserModal(!userModal);
-        console.log(userModal);
 
     }
     return (
@@ -26,12 +25,3 @@ export function UserSidebar() {
     )
 }
 
-// select:required:invalid {
-//     color: gray;
-//   }
-//   option[value=""][disabled] {
-//     display: none;
-//   }
-//   option {
-//     color: black;
-//   }
