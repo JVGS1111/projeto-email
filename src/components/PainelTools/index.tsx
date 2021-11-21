@@ -1,6 +1,7 @@
 import styles from './styles.module.scss';
 import { FaFilter } from 'react-icons/fa'
 import common from '../../styles/common.module.scss';
+import { Checkbox } from '../Checkbox';
 
 export function PainelTools() {
     return (
@@ -11,7 +12,7 @@ export function PainelTools() {
             </div>
             <div className={styles.painelButtons}>
                 <div className={styles.buttons}>
-                    <input type="checkbox" />
+                    <Checkbox />
                     <button className={`${common.btn} ${styles.btn}`}>Atribuir</button>
                     <button className={`${common.btn} ${styles.btn}`}>Arquivar</button>
                     <button className={`${common.btn} ${styles.btn}`}>Agendar</button>

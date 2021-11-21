@@ -1,5 +1,5 @@
 import styles from './styles.module.scss';
-import { Link } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
 
 import { useState } from 'react';
 import * as RiIcons from 'react-icons/ri'
@@ -22,6 +22,7 @@ interface sidebarmenuProps {
 export function SidebarMenu({ item }: sidebarmenuProps) {
 
     const [subnav, setSubnav] = useState(false);
+
 
     function toggleShowSubnav() {
         setSubnav(!subnav);
@@ -48,7 +49,7 @@ export function SidebarMenu({ item }: sidebarmenuProps) {
             </Link>
             {subnav && item.subMenus?.map((item) => {
                 return (
-                    <Link className={styles.dropdonwLink} to={'#'} key={item.id}>
+                    <Link className={styles.dropdonwLink} to={`/dashboard/${item.id}`} key={item.id}>
                         <IoIcons.IoIosPaper />
                         <span>{item.name}</span>
                     </Link>

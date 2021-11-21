@@ -33,7 +33,7 @@ export function DataContextData({ children }: DataContextDataProps) {
                 setNavData(res.data);
             }
             )
-    })
+    }, [])
 
     return <DataContext.Provider value={{ navData }}>
         {children}

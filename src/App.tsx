@@ -1,6 +1,4 @@
-
-
-import { BrowserRouter as Router, Route, Routes as Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { DataContextData } from "./hooks/dataContext";
 import { Dashboard } from "./pages/Dashboard";
 
@@ -8,11 +6,20 @@ import { Dashboard } from "./pages/Dashboard";
 export default function App() {
   return (
     <Router>
-      <DataContextData>
-        <Dashboard />
-      </DataContextData>
+
+      <Switch>
+        <Route path="/dashboard">
+          <DataContextData>
+            <Dashboard />
+          </DataContextData>
+        </Route>
+      </Switch>
+
     </Router>
   );
 }
+
+
+
 
 
