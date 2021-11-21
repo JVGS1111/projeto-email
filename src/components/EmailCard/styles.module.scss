@@ -1,0 +1,130 @@
+.card{
+    width: 100%;
+    padding: 1rem;
+    font-weight: 300;
+    cursor: pointer;
+    color: var(--text-color1);
+
+    display: flex;
+    justify-content: space-between;
+   
+    border-top: 1px solid var(--lines); 
+    border-bottom: 1px solid var(--lines); 
+
+    .part1{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        .content{
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            .name{
+                font-size: 1.3rem;
+                font-weight: bold;
+                letter-spacing: 2px;
+            }
+        }
+
+        .owner{
+            
+            .checkbox{
+                display: none;
+            }
+    
+            &:hover{
+                span{
+                    display: none;
+                }
+                .checkbox{
+                    display: block;  
+                }
+            }
+        }
+        ////////////////////////
+        .ownerActiver{
+            position: relative;
+
+            height: 4rem;
+            width: 4rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color:brown;
+
+            .checkbox{
+                display: block;
+            }
+            span{
+                display: none;
+            }
+        }
+        ////////////////////////
+    }
+
+    .part2{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        .users{
+            display: flex;
+
+            
+        }
+    }
+    &:hover{
+        background-color: var(--background1-hover);
+        
+    }
+}
+
+
+// .isActive{
+//     .checkbox{
+//         display: block!important;
+//     }
+// }
+
+.checkbox{
+    
+    input{
+        display: none;
+    }
+    
+    input + label:before{
+        content: '\2714';
+        text-align: center;
+        width: 25px;
+        height: 25px;
+        border:1px solid black;
+        background-color: white;
+        display: inline-block;
+        color: transparent;
+        cursor: pointer;
+    }
+
+    input:checked + label:before{
+        background-color: yellowgreen;
+        color: white;
+           
+    }
+}
+
+.owner{
+    position: relative;
+
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:brown;
+
+    span{
+        font-size: 2rem;
+        font-weight: bold;
+    }
+    
+}

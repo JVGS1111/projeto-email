@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { EmailCard } from "../EmailCard";
 import styles from './styles.module.scss';
 
 export function EmailList() {
@@ -6,7 +7,7 @@ export function EmailList() {
 
     return (
         <div className={styles.container}>
-
+            <EmailCard />
         </div>
     )
 }
