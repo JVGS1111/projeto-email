@@ -31,7 +31,7 @@ export function SidebarMenu({ item }: sidebarmenuProps) {
 
     return (
         <>
-            <Link className={styles.sidebarLink} to={'#'} onClick={item.subMenus && toggleShowSubnav}>
+            <div className={styles.sidebarLink} onClick={item.subMenus && toggleShowSubnav}>
                 <div >
                     <IoIcons.IoMdPeople />
                     <span >{item.name}</span>
@@ -46,7 +46,7 @@ export function SidebarMenu({ item }: sidebarmenuProps) {
                 </div>
 
 
-            </Link>
+            </div>
             {subnav && item.subMenus?.map((item) => {
                 return (
                     <Link className={styles.dropdonwLink} to={`/dashboard/${item.id}`} key={item.id}>

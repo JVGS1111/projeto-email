@@ -67,10 +67,11 @@
         display: flex;
         flex-direction: column;
         gap: 5px;
+        align-items: flex-end;
         .users{
             display: flex;
-
-            
+            position: relative;
+            height: 2.5rem;
         }
     }
     &:hover{
@@ -78,13 +79,6 @@
         
     }
 }
-
-
-// .isActive{
-//     .checkbox{
-//         display: block!important;
-//     }
-// }
 
 .checkbox{
     
