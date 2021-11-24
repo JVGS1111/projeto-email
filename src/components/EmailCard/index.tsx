@@ -17,24 +17,57 @@ interface EmailProp {
 
 export function EmailCard({ email }: EmailProps) {
 
-
-    const [isActive, setIsActive] = useState(false);
+    const { allCheckbox, insertCard, cardCheckeds, removeCard, eraseCardCheckeds } = useData();
 
     const [checkboxCss, setcheckboxCss] = useState(styles.owner);
+    const [globalCheck, setGlobalCheck] = useState(false)
+    const [isActive, setIsActive] = useState(false);
+
+
 
     useEffect(() => {
-        if (isActive) {
+
+        if (globalCheck != allCheckbox) {
+            if (allCheckbox) {
+                if (!isActive) {
+                    setIsActive(!isActive);
+                    insertCard(email.id);
+                }
+            } else {
+                if (isActive) {
+                    eraseCardCheckeds();
+                    setIsActive(!isActive);
+                }
+            }
+            setGlobalCheck(!globalCheck)
+
+        }
+
+        if (cardCheckeds.length) {
             setcheckboxCss(styles.ownerActiver);
         } else {
             setcheckboxCss(styles.owner);
         }
+        console.log(cardCheckeds);
 
-    }, [isActive])
+
+    }, [cardCheckeds, allCheckbox])
+
 
     function toggleIsChecked() {
-        setIsActive(!isActive);
-    }
+        // a funcao abaixo altera altera o estado do checkbox, popula o array com os cards selecionados e remove quando desmarcados
+        const newState = !isActive;
 
+        if (newState) {
+            setIsActive(newState);
+            insertCard(email.id);
+        } else {
+            setIsActive(newState);
+            removeCard(email.id);
+        }
+        console.log('ta rodando');
+
+    }
 
     return (
         <div className={styles.card}>
@@ -43,7 +76,7 @@ export function EmailCard({ email }: EmailProps) {
                     <span>{email.owner}</span>
 
                     <div className={styles.checkbox}>
-                        <input onChange={toggleIsChecked} id={`checkbox${email.id}`} type="checkbox" />
+                        <input onClick={toggleIsChecked} checked={isActive} defaultChecked={false} id={`checkbox${email.id}`} type="checkbox" />
                         <label htmlFor={`checkbox${email.id}`}></label>
                     </div>
 
@@ -63,7 +96,7 @@ export function EmailCard({ email }: EmailProps) {
                     {
                         email.users.map((user, index) => {
                             const left = 23 * index;
-                            return <UsersImg name={user} left={left} />
+                            return <UsersImg key={index} name={user} left={left} />
                         })
                     }
                 </div>
