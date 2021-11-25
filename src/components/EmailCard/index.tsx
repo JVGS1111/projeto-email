@@ -24,8 +24,8 @@ export function EmailCard({ email }: EmailProps) {
     const [isActive, setIsActive] = useState(false);
 
 
-
     useEffect(() => {
+
 
         if (globalCheck != allCheckbox) {
             if (allCheckbox) {
@@ -40,16 +40,14 @@ export function EmailCard({ email }: EmailProps) {
                 }
             }
             setGlobalCheck(!globalCheck)
-
-        }
+        }//este trecho de codigo verifica se o checkbox global esta ativo, se esiver ele ativa todos os outros e quando desativado desativa todos os checkbox
+        //não está completo ainda. 
 
         if (cardCheckeds.length) {
             setcheckboxCss(styles.ownerActiver);
         } else {
             setcheckboxCss(styles.owner);
-        }
-        console.log(cardCheckeds);
-
+        }//este trecho de codigo verifica se existe algum checkbox ativo e musa o css para aparecer os demais checkbox
 
     }, [cardCheckeds, allCheckbox])
 
@@ -65,7 +63,6 @@ export function EmailCard({ email }: EmailProps) {
             setIsActive(newState);
             removeCard(email.id);
         }
-        console.log('ta rodando');
 
     }
 

@@ -1,7 +1,10 @@
 import styles from './styles.module.scss';
 import common from '../../styles/common.module.scss';
+import { useData } from '../../hooks/dataContext';
 
 export function UserInfoModal() {
+
+    const { logout } = useData()
 
     return (
         <div className={styles.userModal}>
@@ -10,7 +13,7 @@ export function UserInfoModal() {
                 <label className={styles.userStatus} />
                 <label>Online</label>
             </div>
-            <button className={`${common.btn} ${styles.btnLogout}`}>Logout</button>
+            <button onClick={logout} className={`${common.btn} ${styles.btnLogout}`}>Logout</button>
         </div>
     )
 }

@@ -1,7 +1,8 @@
 import { createContext, ReactNode, useContext, useEffect } from "react";
 import { useState } from "react";
 import { api } from "../services/api";
-
+import { toast } from 'react-toastify';
+import { useHistory } from "react-router";
 
 interface DataContextDataProps {
     children: ReactNode
@@ -21,6 +22,8 @@ interface ContextData {
     emails: EmailsProps[],
     cardCheckeds: string[],
     allCheckbox: boolean,
+    isLogged: boolean,
+    light: boolean,
     getEmails: (id: number) => void,
     toggleAllCheckboxToFalse: () => void,
     toggleAllCheckboxToTrue: () => void,
@@ -28,8 +31,10 @@ interface ContextData {
     removeCard: (id: string) => void,
     shelveEmail: () => void,
     eraseCardCheckeds: () => void,
+    verifyLogin: (nome: string, senha: string) => void,
+    logout: () => void,
+    toggleLight: () => void,
 }
-
 
 interface EmailsResProps {
     id: number,
@@ -50,21 +55,19 @@ interface EmailsProps {
     users: string[]
 }
 
-// interface CardCheckeds {
-//     id: number
-// }
-
 export const DataContext = createContext<ContextData>({} as ContextData);
 
 
 export function DataContextData({ children }: DataContextDataProps) {
-    //importar os dados da api e formatar
-    const [navData, setNavData] = useState<NavDataProps[]>([])
+
+    const [cardCheckeds, setCardCheckeds] = useState<string[]>([]);
+    const [navData, setNavData] = useState<NavDataProps[]>([]);
+    const [archive, setArchive] = useState<EmailsProps[]>([]);
     const [emails, setEmails] = useState<EmailsProps[]>([]);
     const [allCheckbox, setlAllCheckbox] = useState(false);
-    const [cardCheckeds, setCardCheckeds] = useState<string[]>([]);
-    const [archive, setArchive] = useState<EmailsProps[]>([]);
-
+    const [isLogged, setIsLogged] = useState(false);
+    const [light, setLight] = useState(false);
+    const history = useHistory();
 
     useEffect(() => {
         api.get<any>('/workinideas/vagafrontendteste/menus')
@@ -73,6 +76,21 @@ export function DataContextData({ children }: DataContextDataProps) {
             }
             )
     }, [])
+
+    function verifyLogin(nome: string, senha: string) {
+        if (nome == 'admin' && senha == 'admin') {
+            setIsLogged(true);
+        } else {
+            toast.error('Verifique seu nome e senha e tente novamente');
+        }
+    }
+
+    function logout() {
+        setIsLogged(false)
+        console.log(history);
+        window.location.href = "/"
+        //history.push("/");
+    }
 
     function shelveEmail() {
         //a funcao abaixo remove os itens selecinados da caixa de entrada e popula o arquivo
@@ -87,8 +105,10 @@ export function DataContextData({ children }: DataContextDataProps) {
         newArquive = emails.filter(card => cardCheckeds.includes(card.id));
         newEmails = emails.filter(card => !cardCheckeds.includes(card.id));
 
+        toast.info('E-mails arquivados com sucesso!')
         setArchive(newArquive);
         setEmails(newEmails);
+        setCardCheckeds([]);
     }
 
     function toggleAllCheckboxToFalse() {
@@ -100,44 +120,45 @@ export function DataContextData({ children }: DataContextDataProps) {
     }
 
     function insertCard(id: string) {
-        //setar no arr os ids para poder remover os salvos e depois comparar o tamanho para 
-        //saber se tem algum checked
+        // a funcao adiciona ao array o card selecionado
         setCardCheckeds((lastValue: any[]) => {
             return [...lastValue, id];
         })
     }
+    function toggleLight() {
 
+        setLight(!light);
+    }
     function removeCard(id: string) {
-        // console.log(id);
-        // os tres card estao ao mesmo invocando a funcao e assim trabalhando com um estado atual e nao futuro
+        //a funcao remove o card selecionado do array
         let newArr = cardCheckeds.filter((item) => {
             return item !== id;
         })
-        console.log(newArr);
 
         setCardCheckeds(newArr);
     }
 
     function eraseCardCheckeds() {
+        // a funcao remove todos os card de uma vez do array
         setCardCheckeds([]);
     }
 
 
     function getEmails(id: number) {
-        //funcao retorna lista de email e insere no estado
+        //funcao retorna uma array de email e insere na lista 
         api.get<any>(`/workinideas/vagafrontendteste/items/${id}`)
             .then(res => {
 
                 const response: EmailsResProps = res.data;
 
-                setEmails(response.subMenuItems)
+                setEmails(response.subMenuItems);
             })
     }
 
 
 
 
-    return <DataContext.Provider value={{ navData, emails, allCheckbox, getEmails, toggleAllCheckboxToFalse, toggleAllCheckboxToTrue, cardCheckeds, insertCard, removeCard, shelveEmail, eraseCardCheckeds }}>
+    return <DataContext.Provider value={{ toggleLight, logout, verifyLogin, isLogged, navData, emails, allCheckbox, cardCheckeds, light, getEmails, toggleAllCheckboxToFalse, toggleAllCheckboxToTrue, insertCard, removeCard, shelveEmail, eraseCardCheckeds }}>
         {children}
     </DataContext.Provider>
 }
