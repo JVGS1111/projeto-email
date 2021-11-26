@@ -1,5 +1,5 @@
 import styles from './styles.module.scss';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { useState } from 'react';
 import * as RiIcons from 'react-icons/ri'

@@ -23,7 +23,6 @@ interface ContextData {
     cardCheckeds: string[],
     allCheckbox: boolean,
     isLogged: boolean,
-    light: boolean,
     getEmails: (id: number) => void,
     toggleAllCheckboxToFalse: () => void,
     toggleAllCheckboxToTrue: () => void,
@@ -33,7 +32,6 @@ interface ContextData {
     eraseCardCheckeds: () => void,
     verifyLogin: (nome: string, senha: string) => void,
     logout: () => void,
-    toggleLight: () => void,
 }
 
 interface EmailsResProps {
@@ -66,7 +64,6 @@ export function DataContextData({ children }: DataContextDataProps) {
     const [emails, setEmails] = useState<EmailsProps[]>([]);
     const [allCheckbox, setlAllCheckbox] = useState(false);
     const [isLogged, setIsLogged] = useState(false);
-    const [light, setLight] = useState(false);
     const history = useHistory();
 
     useEffect(() => {
@@ -75,7 +72,7 @@ export function DataContextData({ children }: DataContextDataProps) {
                 setNavData(res.data);
             }
             )
-    }, [])
+    }, []);
 
     function verifyLogin(nome: string, senha: string) {
         if (nome == 'admin' && senha == 'admin') {
@@ -86,18 +83,17 @@ export function DataContextData({ children }: DataContextDataProps) {
     }
 
     function logout() {
-        setIsLogged(false)
-        console.log(history);
-        window.location.href = "/"
-        //history.push("/");
+
+        setIsLogged(false);
+        history.push("/");
     }
 
     function shelveEmail() {
         //a funcao abaixo remove os itens selecinados da caixa de entrada e popula o arquivo
 
         if (!cardCheckeds) {
+            toast.error('Nenhum email selecionado');
             return
-            //adicionar toast com mensagem informado falha
         }
         let newArquive: EmailsProps[] = []//arquivo
         let newEmails: EmailsProps[] = []//nova lista de emails
@@ -125,10 +121,7 @@ export function DataContextData({ children }: DataContextDataProps) {
             return [...lastValue, id];
         })
     }
-    function toggleLight() {
 
-        setLight(!light);
-    }
     function removeCard(id: string) {
         //a funcao remove o card selecionado do array
         let newArr = cardCheckeds.filter((item) => {
@@ -158,7 +151,7 @@ export function DataContextData({ children }: DataContextDataProps) {
 
 
 
-    return <DataContext.Provider value={{ toggleLight, logout, verifyLogin, isLogged, navData, emails, allCheckbox, cardCheckeds, light, getEmails, toggleAllCheckboxToFalse, toggleAllCheckboxToTrue, insertCard, removeCard, shelveEmail, eraseCardCheckeds }}>
+    return <DataContext.Provider value={{ logout, verifyLogin, isLogged, navData, emails, allCheckbox, cardCheckeds, getEmails, toggleAllCheckboxToFalse, toggleAllCheckboxToTrue, insertCard, removeCard, shelveEmail, eraseCardCheckeds }}>
         {children}
     </DataContext.Provider>
 }

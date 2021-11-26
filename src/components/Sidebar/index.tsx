@@ -3,7 +3,6 @@ import styles from './styles.module.scss';
 import { SidebarMenu } from '../SidebarMenu';
 import { UserSidebar } from '../UserSidebar';
 import { useData } from '../../hooks/dataContext';
-import { BtnThemeColor } from '../BtnThemeColor';
 
 interface SidebarProps {
     id: number,
@@ -29,7 +28,6 @@ export function Sidebar() {
                         })
                     }
                 </div>
-                <BtnThemeColor />
 
             </div>
         </>

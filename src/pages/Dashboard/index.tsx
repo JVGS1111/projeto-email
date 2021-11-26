@@ -1,9 +1,9 @@
+import { Route, Switch } from "react-router-dom";
 import { PainelEmails } from "../../components/PainelEmails";
 import { Sidebar } from "../../components/Sidebar";
-import styles from './styles.module.scss';
-import { Route, Switch } from "react-router-dom";
 import { EmptyListEmails } from "../../components/EmptyListEmails";
 import { EmailList } from "../../components/EmailList";
+import styles from './styles.module.scss';
 
 export function Dashboard() {
 

@@ -27,7 +27,7 @@ export function EmailCard({ email }: EmailProps) {
     useEffect(() => {
 
 
-        if (globalCheck != allCheckbox) {
+        if (globalCheck !== allCheckbox) {
             if (allCheckbox) {
                 if (!isActive) {
                     setIsActive(!isActive);
@@ -73,7 +73,7 @@ export function EmailCard({ email }: EmailProps) {
                     <span>{email.owner}</span>
 
                     <div className={styles.checkbox}>
-                        <input onClick={toggleIsChecked} checked={isActive} defaultChecked={false} id={`checkbox${email.id}`} type="checkbox" />
+                        <input onChange={toggleIsChecked} checked={isActive} id={`checkbox${email.id}`} type="checkbox" />
                         <label htmlFor={`checkbox${email.id}`}></label>
                     </div>
 
