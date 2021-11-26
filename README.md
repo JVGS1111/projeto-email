@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# Projeto Email
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Esse projeto é um front-end de um email, é possivel logar e ver os emails de várias contas cadastradas e arquivá-los.
 
-## Available Scripts
+## Como usar 
 
-In the project directory, you can run:
+No terminal rode o comando abaixo para instalar as dependências:
+
+### `yarn`
+
+Para inicializar use o comando abaixo:
 
 ### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Utilização
 
-### `yarn test`
+A primeira pagnia será a de login, use `admin` no nome e senha para entrar
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Captura de tela 2021-11-26 150122](https://user-images.githubusercontent.com/72321264/143617890-e5d6815e-f53d-4662-84f6-69261b7f6654.png)
 
-### `yarn build`
+Ao entrar verá a dashboard contendo a sidebar, painel e lista de emails que estará vazia 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Captura de tela 2021-11-26 150358](https://user-images.githubusercontent.com/72321264/143618007-4e6aa9f4-2f4f-40d3-a6a3-6021b82b3930.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Clicando em alguma conta e em alguma categoria os emails vão aparecer na tela ao lado
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Captura de tela 2021-11-26 150452](https://user-images.githubusercontent.com/72321264/143618136-f0cc5409-2ba0-4624-bc17-745226f8f16c.png)
 
-### `yarn eject`
+Você pode adicionar os emails que selecionar ao arquivo
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![Captura de tela 2021-11-26 150643](https://user-images.githubusercontent.com/72321264/143618225-bb860ed7-46a4-4009-8ddf-618249dd12a5.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Ao clicar na imagem do usuário algumas opções são exibidas e é possível fazer logout
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![Captura de tela 2021-11-26 150800](https://user-images.githubusercontent.com/72321264/143618351-07f3ec90-b098-4253-b815-c724079a2671.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Clicando no botão inferior esquerdo é possível alternar entre tema claro e escuro
 
-## Learn More
+![Captura de tela 2021-11-26 151001](https://user-images.githubusercontent.com/72321264/143618427-87b69588-aa76-46d6-a60a-b9071f2434e8.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Técnologias utilizadas
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+TypeScript, Sass, ReactJs, toastify, React-Icons, Axios, React-Router-Dom
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### #NeverStopLearning
